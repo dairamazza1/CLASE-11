@@ -1,0 +1,28 @@
+html(lang= "es")
+    head
+      title= "Productos"
+    body 
+      legend="Ingrese productos"
+        form(action="/productos" enctype="multipart/form-data" method="post")
+          input(placeholder="Nombre de producto" type="text" name ="name" required)
+          input(placeholder="Precio" type="number" name ="price" required)
+          input(placeholder="Ruta de imagen" type="text" name ="thumbnail" required)
+          input(type="submit" value="Enviar")
+
+
+    if listExists
+      p= 'Vista de productos'
+      table(style='width:100%', border='1')
+        tr 
+          th Nombre
+          th Precio 
+          th Imagen 
+        each val in listProduct
+          th val.title 
+          th val.price 
+          th val.thumbail
+
+    if listNotExists
+      p='Vista de productos'
+      p='No se encontraron productos'
+
