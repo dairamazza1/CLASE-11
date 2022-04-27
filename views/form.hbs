@@ -1,0 +1,46 @@
+<legend>Ingrese productos</legend>
+    <form action="/productos" method="post">
+        <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input class="form-control" type="text" id="inputName" name ="name">
+        </div>
+        <div class="mb-3">
+        <label for="price" class="form-label">Precio</label>
+        <input class="form-control" type="number" id="inputNumber" name ="price">
+        </div>
+        <div class="mb-3">
+        <label for="thumbnail" class="form-label">Foto URL</label>
+        <input class="form-control" type="text" id="inputText" name ="thumbnail">
+        </div>
+        <div class="mb-3">
+        <input type="submit" class="btn btn-primary mb-3" value="Enviar">
+        </div>
+   </form>
+  
+{{#if listExists}}
+<legend>Vista de productos</legend>
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each listProduct}}
+    <tr>
+      <td>{{this.title}}</td>
+      <td>{{this.price}}</td>
+      <td>{{this.thumbnail}}</td>
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+{{/if}}
+
+
+{{#if listNotExists}}
+<legend>Vista de productos</legend>
+<p class="font-monospace">No se encontraron productos</p>
+{{/if}}
